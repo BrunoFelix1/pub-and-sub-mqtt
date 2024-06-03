@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginSmartgreen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+    <script>
+    function logar() {
+        var login = document.querySelector('.usuario input[type="text"]').value;
+        var senha = document.querySelector('.senha input[type="password"]').value;
+
+        if (login === 'admin' && senha === 'admin') {
+            alert('Sucesso');
+            location.href = "home.html";
+        } else {
+            alert('Usuário ou senha incorretos!');
+        }
+    }
+
+    </script>
+</head>
+<body>
+    <div class="main">
+        <form action="">
+            <h1>Fazer Login</h1>
+            <div class="usuario">
+                <h2>NOME DE USUÁRIO</h2>
+                <input type="text">
+            </div>
+            <div class="senha">
+                <h2>SENHA</h2>
+                <input type="password">
+            </div>
+            <button type="submit" onclick="logar(); return false" class="entrar">Entrar ></button>
+            <button class="cadastro">Realizar cadastro ></button>
+        </form>
+
+        <div class="images">
+            <img class="logo" src="./src/images/logoSmart.png" alt="Logo SmartGreen">
+            <img class="city" src="./src/images/City.png" alt="Cidade">
+        </div>
+
+        <div class="circulo maior">
+            <div class="circulo menor"></div>
+        </div>
+    </div>
+    
+</body>
+</html>

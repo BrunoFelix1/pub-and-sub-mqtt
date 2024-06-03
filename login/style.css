@@ -1,0 +1,111 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(149deg, rgba(235,249,234,1) 0%, rgba(214,250,211,1) 14%, rgba(134,147,134,1) 73%, rgba(95,110,92,1) 91%);
+    font-family: Hammersmith One;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%; /* Defina a largura total do conteúdo */
+}
+
+form {
+    width:30%; /* Defina a largura do formulário */
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #AED5B9;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+form h1 {
+    margin: 0;
+}
+
+.images {
+    display: flex;
+    width: 40%; /* Defina a largura da seção de imagens */
+}
+
+.images .city {
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 55vh;
+    width: 47vw;
+}
+
+.images .logo {
+    height: 20vh;
+    width: 43vw;
+    position: absolute;
+    bottom: 390px;
+    right: 100px;
+}
+
+.usuario, .senha {
+    width: 80%;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.usuario h2, .senha h2 {
+    font-size: 7px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    margin-top: 3px;
+}
+
+.usuario input, .senha input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    padding-top: 20px;
+    font-size: 11px;
+}
+
+button {
+    border: 0;
+    border-radius: 15px;
+    font-size: 12px;
+    font-family: Hammersmith One;
+    text-align: center;
+    height: 25px;
+}
+
+button:hover{
+    background-color: gray;
+    color: white;
+}
+
+.entrar {
+    width: 30%;
+}
+
+.cadastro {
+    width: 50%;
+}
+
+
+

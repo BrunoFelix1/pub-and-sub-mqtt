@@ -1,0 +1,26 @@
+[
+{
+    "timestamp": "2024-05-09 19:48:43",
+    "topic": "temp/sub",
+    "payload": "placa 1, TRUE, rua 5, TRUE, 29, 257",
+    "index": 0
+},
+{
+    "timestamp": "2024-05-09 19:57:47",
+    "topic": "temp/sub",
+    "payload": "placa 2, TRUE, rua 6, TRUE, 31, 260",
+    "index": 1
+},
+{
+    "timestamp": "2024-05-09 19:58:16",
+    "topic": "temp/sub",
+    "payload": "placa 1, TRUE, rua 5, TRUE, 29, 300",
+    "index": 2
+},
+{
+    "timestamp": "2024-05-09 19:58:46",
+    "topic": "temp/sub",
+    "payload": "placa 3, TRUE, rua 7, TRUE, 32, 290",
+    "index": 3
+}
+]
