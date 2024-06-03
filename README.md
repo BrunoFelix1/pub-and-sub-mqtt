@@ -17,7 +17,8 @@ Clone este repositório em sua máquina local
 Instale as dependências do Node.js utilizando o npm  
 Instale a biblioteca paho-mqtt para poder executar o script Python  
 
-# Passo a passo
+# Passo a passo  
+PubAndSub é um exemplo simples de uso do protocolo MQTT, apenas para entendimento prévio.  
 Abra um terminal no diretório do projeto e execute o script Python para fazer a conexão com o servidor mqtt:  
 python mqtt_subscriber.py  
 Não feche ou pare a execução, pois ele irá receber as mensagens do servidor e automaticamente irá gerar uma arquivo chamado: 'messagemqtt.json'.  
