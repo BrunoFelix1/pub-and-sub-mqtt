@@ -1,36 +1,112 @@
-# SmartGreen
-Projeto para aplicação do protocolo MQTT em dispositivos IoT.
+# SmartGreen - IoT Weather Station Monitoring System
 
-# Descrição
-Uma aplicação que exibe mensagens MQTT recebidas e armazenadas em um banco de dados SQLite.
+A real-time IoT monitoring application that collects, processes, and displays environmental data from IoT weather stations using the MQTT protocol.
 
-# Pré-requisitos
-Antes de começar, certifique-se de ter instalado o seguinte:  
+## Description
 
-Node.js (v12 ou superior)  
-NPM (geralmente instalado junto com o Node.js)  
-SQLite (opcional se já tiver um banco de dados SQLite configurado)  
-Python (v3.12)  
-PIP (geralmente instalado junto com o Python)  
-Instalação dos Módulos  
-Clone este repositório em sua máquina local  
-Instale as dependências do Node.js utilizando o npm  
-Instale a biblioteca paho-mqtt para poder executar o script Python  
+SmartGreen is a comprehensive IoT monitoring system that demonstrates the implementation of MQTT protocol for collecting environmental data from IoT weather stations. The system receives sensor data (temperature, luminosity, operational status, connectivity, and location) through MQTT messages, stores them in a SQLite database, and displays the information through a modern web interface in real-time.
 
-# Passo a passo  
-PubAndSub é um exemplo simples de uso do protocolo MQTT, apenas para entendimento prévio.  
-Abra um terminal no diretório do projeto e execute o script Python para fazer a conexão com o servidor mqtt:  
-python mqtt_subscriber.py  
-Não feche ou pare a execução, pois ele irá receber as mensagens do servidor e automaticamente irá gerar uma arquivo chamado: 'messagemqtt.json'.  
-Aqui você estará recebendo as mensagens em tempo real no formato de JSON.  
-Abra outro terminal, dessa vez iremos armazenar as mensagens do arquivo 'messagemqtt.json' em um banco de dados chamado: estacao.db, para isso  
-execute o seguinte comando em um NOVO terminal:  
-node processMessage.js  
-Mais uma vez, não feche o terminal, deixe rodando.  
-Aqui o script criará um banco de dados sqlite chamado 'estacao.db'. E após isso ele irá ler, processar e armazenar as mensagens a cada 1 segundo.  
-Abra outro terminal e desta vez execute o server da nossa aplicação:  
-node mqtt_server.js     
-Mais uma vez, não feche o terminal, deixe rodando.  
-Isso iniciará o servidor, que estará pronto para receber requisições na porta padrão 3000. Você pode acessar a aplicação em seu navegador web  
-utilizando o seguinte endereço:  
+### Key Features
+- Real-time MQTT message subscription and processing
+- Automatic data storage in SQLite database
+- Web-based dashboard for monitoring station data
+- Support for multiple IoT weather stations
+- Real-time updates every 2 seconds
+- Responsive and modern UI design
+
+### System Architecture
+The system consists of three main components:
+1. **MQTT Subscriber** (Python) - Connects to MQTT broker and receives sensor data
+2. **Message Processor** (Node.js) - Processes JSON messages and stores data in SQLite database
+3. **Web Server** (Node.js/Express) - Serves the web interface and provides API endpoints
+
+## Prerequisites
+
+Before running the application, ensure you have the following installed:
+
+- **Node.js** (v12 or higher)
+- **NPM** (usually installed with Node.js)
+- **Python** (v3.12)
+- **PIP** (usually installed with Python)
+
+## Installation
+
+1. Clone this repository to your local machine
+2. Install Node.js dependencies:
+   ```bash
+   npm install
+   ```
+3. Install Python MQTT library:
+   ```bash
+   pip install paho-mqtt
+   ```
+
+## Usage
+
+The application requires three separate terminal sessions to run all components:
+
+### Step 1: Start MQTT Subscriber
+Open a terminal in the project directory and run the Python script to connect to the MQTT server:
+```bash
+python mqtt_subscriber.py
+```
+Keep this terminal running. This script will receive messages from the MQTT server and automatically generate a file called `messagemqtt.json` with real-time JSON formatted messages.
+
+### Step 2: Start Message Processor
+Open a **NEW** terminal and run the message processor to store data in the database:
+```bash
+node processMessage.js
+```
+Keep this terminal running. This script will:
+- Create a SQLite database called `estacao.db`
+- Read, process, and store messages from `messagemqtt.json` every second
+- Prevent duplicate message processing
+
+### Step 3: Start Web Server
+Open another **NEW** terminal and start the application server:
+```bash
+node mqtt_server.js
+```
+Keep this terminal running. This will start the server on the default port 3000.
+
+### Step 4: Access the Application
+Open your web browser and navigate to:
+```
 http://localhost:3000
+```
+
+## Data Format
+
+The system expects MQTT messages with the following payload format:
+```
+"placa [ID], [OPERATIONAL], [LOCATION], [CONNECTIVITY], [TEMPERATURE], [LUMINOSITY]"
+```
+
+Example:
+```
+"placa 1, TRUE, rua 5, TRUE, 29, 257"
+```
+
+Where:
+- **placa [ID]**: Station identifier
+- **OPERATIONAL**: TRUE/FALSE - Station operational status
+- **LOCATION**: Station location (e.g., "rua 5")
+- **CONNECTIVITY**: TRUE/FALSE - Connectivity status
+- **TEMPERATURE**: Temperature reading in Celsius
+- **LUMINOSITY**: Light intensity reading
+
+## Testing
+
+The `PubAndSub` directory contains simple MQTT publisher and subscriber examples for testing and understanding the MQTT protocol implementation.
+
+## Database Schema
+
+The SQLite database (`estacao.db`) contains a table called `Estacao` with the following structure:
+- **Id**: Primary key (auto-increment)
+- **Placa**: Station identifier
+- **Operacional**: Operational status (boolean)
+- **Localizacao**: Location string
+- **Conectividade**: Connectivity status (boolean)
+- **Temperatura**: Temperature reading (real)
+- **Luminosidade**: Luminosity reading (real)
+- **DataDeInclusao**: Timestamp (unique)
